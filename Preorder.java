@@ -33,6 +33,15 @@ public class Preorder {
         return Math.max(lh,rh) + 1;
 
     }
+    public static int nodecount(Node root){
+        if(root == null){
+            return 0;
+        }
+        int ln = nodecount(root.left);
+        int rn = nodecount(root.right);
+        return ln + rn + 1;
+
+    }
     public static void printingPreorder(Node root){
         if(root == null){
             return;
@@ -99,5 +108,6 @@ public class Preorder {
         printingLeverorder(root);
         heightOfTree(root);
         System.out.println(heightOfTree(root));
+        System.out.println(nodecount(root));
     }
 }
