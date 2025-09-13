@@ -66,6 +66,26 @@ public class Preorder {
         printingpostorder(root.right);
         System.out.print(root.data+" ");
     }
+    public static int diameter(Node root){
+        if(root == null){
+            return 0;
+        }
+        int leftDiam = diameter(root.left);
+        int leftheight = heightOfTree(root.left);
+        int rightdiam = diameter(root.right);
+        int rightheight = heightOfTree(root.right);
+        int selfdiam = leftheight + rightheight + 1;
+        return Math.max(selfdiam,Math.max(leftDiam,rightdiam));
+    }
+
+    public static int sumoftreenodes(Node root){
+        if(root == null){
+            return 0;
+        }
+        int left_node_sum = sumoftreenodes(root.left);
+        int right_node_sum = sumoftreenodes(root.right);
+        return left_node_sum + right_node_sum + root.data;
+    }
     public static void printingLeverorder(Node root){
         if(root == null){
             return;
@@ -109,5 +129,7 @@ public class Preorder {
         heightOfTree(root);
         System.out.println(heightOfTree(root));
         System.out.println(nodecount(root));
+        System.out.println(sumoftreenodes(root));
+        System.out.println(diameter(root));
     }
 }
